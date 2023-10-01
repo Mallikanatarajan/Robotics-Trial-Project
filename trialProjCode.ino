@@ -10,8 +10,8 @@ Servo servo;
 const int servoPin = 9;
 
 // Variables for orientation and offset
-int servoAngle = 90; // Initial servo angle (adjust as needed)
-int offsetAngle = 0; // Offset angle (default is 0 degrees)
+int servoAngle = 90; // Initial servo angle 
+int offsetAngle = 0; // Offset angle 
 
 void setup() {
   // Initialize serial communication
@@ -26,19 +26,19 @@ void setup() {
   Wire.write(0);    // Set to zero to wake up MPU6050
   Wire.endTransmission(true);
 
-  // Attach servo to its pin
+  // Attach servo to pin
   servo.attach(servoPin); 
 }
 
 void loop() {
-  // Read accelerometer data from MPU6050
+  // Read from MPU6050
   int16_t accelerometerX, accelerometerY, accelerometerZ;
   readMPU6050Data(accelerometerX, accelerometerY, accelerometerZ);
 
   // Calculate pitch angle (adjust according to orientation)
   float angle = atan2(-accelerometerX, accelerometerZ) * 180 / PI;
 
-  // Apply offset (if any)
+  // Apply offset 
   angle += offsetAngle;
 
   // Map angle to servo position (adjust min and max angles as needed)
@@ -63,8 +63,8 @@ void loop() {
     }
   }
 
-  // Add a delay to avoid excessive servo movement (adjust as needed)
-  delay(100);
+  // delay to avoid excessive servo movement 
+  delay(50);
 }
 
 void readMPU6050Data(int16_t &ax, int16_t &ay, int16_t &az) {
