@@ -64,7 +64,7 @@ void loop() {
   }
 
   // delay to avoid excessive servo movement? 
-  delay(50);
+  delay(70);
 }
 
 void readMPU6050Data(int16_t &ax, int16_t &ay, int16_t &az) {
